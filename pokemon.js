@@ -2,6 +2,7 @@
 const pokeAPIBaseUrl = "https://pokeapi.co/api/v2/pokemon/";
 const game = document.getElementById('game');
 
+let clicks = 0;
 let firstPick;
 let isPaused = true;
 let matches;
@@ -35,6 +36,7 @@ const loadPokemon = async () => {
 }
 
 const resetGame = async() => {
+    setValues();
     game.innerHTML = '';
     isPaused = true;
     firstPick = null;
@@ -89,13 +91,22 @@ const clickCard = (e) => {
         }else {
             matches++;
             if(matches === 8) {
-                console.log("WINNER");
+                displayWinningCard();
             }
             firstPick = null;
             isPaused = false;
         }
     }
-    
+    clicks++;
+    updateClicks();
+}
+
+const displayWinningCard = () => {
+    const winningCardHTML = `
+        <dialog>
+            
+        </dialog>
+    `;
 }
 
 const getFrontAndBackFromCard = (card) => {
@@ -107,6 +118,15 @@ const getFrontAndBackFromCard = (card) => {
 const rotateElements = (elements) => {
     if(typeof elements !== 'object' || !elements.length) return;
     elements.forEach(element => element.classList.toggle('rotated'));
+}
+
+const setValues = () => {
+    clicks = 0;
+    document.getElementById("numOfClicks").innerHTML = clicks;
+}
+
+const updateClicks = () => {
+    document.getElementById("numOfClicks").innerHTML= clicks;
 }
 
 resetGame();

@@ -3,6 +3,11 @@
   src: url(pokemon.ttf);
 }
 
+:root {
+  --columns: 4;
+  --rows: 4; 
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -28,8 +33,8 @@ h1 {
 
 #game {
   display: grid;
-  grid-template-columns: repeat(4, 160px);
-  grid-template-rows: repeat(4, 160px);
+  grid-template-columns: repeat(var(--columns), 160px);
+  grid-template-rows: repeat(var(--rows), 160px);
   grid-gap: 10px;
 }
 
@@ -64,9 +69,11 @@ h1 {
 
 .front {
   background-image: url('pokeball.png');
+  object-fit: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
+  background-size: 100%
 }
 
 button {
