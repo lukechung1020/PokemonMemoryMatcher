@@ -219,6 +219,10 @@ const startGame = (selectedDifficulty, selectedTheme) => {
         document.documentElement.style.setProperty("--bg", "#121212");
         document.documentElement.style.setProperty("--card-colour", "#f5f5f5");
         document.documentElement.style.setProperty("--text-colour", "#f5f5f5");
+    } else {
+        document.documentElement.style.setProperty("--bg", "white");
+        document.documentElement.style.setProperty("--card-colour", "black");
+        document.documentElement.style.setProperty("--text-colour", "black");
     }
 
     settingsModal.close();
