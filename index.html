@@ -1,22 +1,80 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Memory Game</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Pokematch</h1>
-        <h2>Clicks: <span id="numOfClicks"></span></h2>
-        <button onclick="resetGame()">Reset</button>
-      </header>
-      <div id="game"></div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Memory Game</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Pokematch</h1>
+      <button onclick="initiateGame()">Reset</button>
     </div>
-    <script src="pokemon.js"></script>
-    
-  </body>
-  </html>
+    <div class="stats">
+      <div id="timer-container">
+        <h2>Timer: <span id="minute">0</span>:<span id="second">00</span></h2>
+        <div id="animation"></div>
+      </div>
+      <h2>Matches: <span id="matches">0</span>/<span id="numMatches">0</span></h2>
+      <h2>Clicks: <span id="num-clicks"></span></h2>
+    </div>
+    <div id="game"></div>
+  </div>
+
+  <dialog class="popup" id="settings-modal">
+    <div class="modal-header">
+      <h2>Welcome to Pokematch! A memory game with the original 150 Pokemon!</h2>
+      <form id="game-settings">
+        <label for="choose-difficulty">Choose a difficulty:</label>
+        <select name="choose-difficulty" id="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <br>
+        <label for="choose-theme">Choose the theme:</label>
+        <select name="choose-theme" id="theme">
+          <option value="Light">Light Mode</option>
+          <option value="Dark">Dark Mode</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" id="start-game">
+          <b>Start Game</b>
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog class="popup" id="winning-modal">
+    <div class="modal-header">
+      <h2>Congratulations! You win!</h2>
+    </div>
+    <div class="modal-footer">
+      <button class="play-again" onclick="closeWinningCard()">
+        <b>Play Again</b>
+      </button>
+    </div>
+  </dialog>
+
+  <dialog class="popup" id="losing-modal">
+    <div class="modal-header">
+      <h2>You ran out of time!</h2>
+    </div>
+    <div class="modal-footer">
+      <button class="play-again" onclick="closeLosingCard()">
+        <b>Play Again</b>
+      </button>
+    </div>
+  </dialog>
+
+  <script src="pokemon.js"></script>
+
+</body>
+
+</html>

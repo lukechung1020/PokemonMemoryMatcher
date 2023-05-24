@@ -6,29 +6,39 @@
 :root {
   --columns: 4;
   --rows: 4; 
+  --bg: white;
+  --card-colour: black;
+  --text-colour: black;
+}
+
+body {
+  font-family: pokemon;
+  letter-spacing: 0.2rem;
+  background-color: var(--bg);
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  font-family: pokemon;
-  letter-spacing: 5px;
   gap: 10px;
-  max-width: 800px;
+  max-width: 50vw;
   margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
-header {
+.header, .stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  color: var(--text-colour);
 }
 
 h1 {
   font-size: 54px;
+  margin: 0;
+  padding: 0;
 }
 
 #game {
@@ -60,7 +70,7 @@ h1 {
 
 .back > h2 {
   margin: 0;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .rotated {
@@ -72,20 +82,52 @@ h1 {
   object-fit: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: black;
-  background-size: 100%
+  background-color: var(--card-colour);
+  background-size: 100%;
+  color: var(--text-colour);
 }
 
 button {
   font-size:18px;
   background-color: #c62828;
   color: white;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   border: none;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   cursor: pointer;
 }
 
-button:hover {
+select {
+  font-size:18px;
+  background-color:black;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+}
+
+.popup {
+  text-align: center;
+  color: var(--text-colour);
+  background-color: var(--bg);
+  border-color: var(--text-colour);
+}
+
+
+#timer-container {
+  position: relative;
+}
+
+#animation {
+  position: absolute;
+  top: -0.2rem;
+  right: 0.5rem;
+  display: none;
+  animation: fadeOut 2s;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
